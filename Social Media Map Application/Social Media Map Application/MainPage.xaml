@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+                
+    xmlns:mapsui="clr-namespace:Mapsui.UI.Forms;assembly=Mapsui.UI.Forms" 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="Social_Media_Map_Application.MainPage">
+    
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="TwitMap" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        
+        <Label Text="Google Map Social Media Integration for people with cognitive conditions." FontSize="16" Padding="30,0,30,0"/>
+        <Button Text="Add Event" FontSize="Title" Padding="30,10,30,10" Clicked="AddEvent_Clicked"/>
+
+        <StackLayout>
+            <mapsui:MapView x:Name="mapView"
+             VerticalOptions="FillAndExpand"
+             HorizontalOptions="Fill"
+             BackgroundColor="Gray" 
+             HeightRequest="400"/>
+        </StackLayout>
+
+
+    </StackLayout>
+
+
+
+</ContentPage>

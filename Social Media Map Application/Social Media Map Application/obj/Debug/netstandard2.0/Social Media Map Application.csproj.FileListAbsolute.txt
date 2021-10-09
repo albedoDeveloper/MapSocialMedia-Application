@@ -1,0 +1,30 @@
+C:\Users\Kye\Documents\Year 4 Semester 2\ICT365\Assignment2\MapSocialMedia-Application\Social Media Map Application\Social Media Map Application\bin\Debug\netstandard2.0\Social Media Map Application.deps.json
+C:\Users\Kye\Documents\Year 4 Semester 2\ICT365\Assignment2\MapSocialMedia-Application\Social Media Map Application\Social Media Map Application\bin\Debug\netstandard2.0\Social Media Map Application.dll
+C:\Users\Kye\Documents\Year 4 Semester 2\ICT365\Assignment2\MapSocialMedia-Application\Social Media Map Application\Social Media Map Application\bin\Debug\netstandard2.0\ref\Social Media Map Application.dll
+C:\Users\Kye\Documents\Year 4 Semester 2\ICT365\Assignment2\MapSocialMedia-Application\Social Media Map Application\Social Media Map Application\bin\Debug\netstandard2.0\Social Media Map Application.pdb
+C:\Users\Kye\Documents\Year 4 Semester 2\ICT365\Assignment2\MapSocialMedia-Application\Social Media Map Application\Social Media Map Application\obj\Debug\netstandard2.0\Social Media Map Application.csproj.AssemblyReference.cache
+C:\Users\Kye\Documents\Year 4 Semester 2\ICT365\Assignment2\MapSocialMedia-Application\Social Media Map Application\Social Media Map Application\obj\Debug\netstandard2.0\Social Media Map Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kye\Documents\Year 4 Semester 2\ICT365\Assignment2\MapSocialMedia-Application\Social Media Map Application\Social Media Map Application\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\Kye\Documents\Year 4 Semester 2\ICT365\Assignment2\MapSocialMedia-Application\Social Media Map Application\Social Media Map Application\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\Kye\Documents\Year 4 Semester 2\ICT365\Assignment2\MapSocialMedia-Application\Social Media Map Application\Social Media Map Application\obj\Debug\netstandard2.0\Social Media Map Application.AssemblyInfoInputs.cache
+C:\Users\Kye\Documents\Year 4 Semester 2\ICT365\Assignment2\MapSocialMedia-Application\Social Media Map Application\Social Media Map Application\obj\Debug\netstandard2.0\Social Media Map Application.AssemblyInfo.cs
+C:\Users\Kye\Documents\Year 4 Semester 2\ICT365\Assignment2\MapSocialMedia-Application\Social Media Map Application\Social Media Map Application\obj\Debug\netstandard2.0\Social Media Map Application.csproj.CoreCompileInputs.cache
+C:\Users\Kye\Documents\Year 4 Semester 2\ICT365\Assignment2\MapSocialMedia-Application\Social Media Map Application\Social Media Map Application\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\Kye\Documents\Year 4 Semester 2\ICT365\Assignment2\MapSocialMedia-Application\Social Media Map Application\Social Media Map Application\obj\Debug\netstandard2.0\Social Media Map Application.dll
+C:\Users\Kye\Documents\Year 4 Semester 2\ICT365\Assignment2\MapSocialMedia-Application\Social Media Map Application\Social Media Map Application\obj\Debug\netstandard2.0\ref\Social Media Map Application.dll
+C:\Users\Kye\Documents\Year 4 Semester 2\ICT365\Assignment2\MapSocialMedia-Application\Social Media Map Application\Social Media Map Application\obj\Debug\netstandard2.0\Social Media Map Application.pdb
+C:\Users\Kye\Music\SocialMap\Social Media Map Application\Social Media Map Application\bin\Debug\netstandard2.0\Social Media Map Application.deps.json
+C:\Users\Kye\Music\SocialMap\Social Media Map Application\Social Media Map Application\bin\Debug\netstandard2.0\Social Media Map Application.dll
+C:\Users\Kye\Music\SocialMap\Social Media Map Application\Social Media Map Application\bin\Debug\netstandard2.0\ref\Social Media Map Application.dll
+C:\Users\Kye\Music\SocialMap\Social Media Map Application\Social Media Map Application\bin\Debug\netstandard2.0\Social Media Map Application.pdb
+C:\Users\Kye\Music\SocialMap\Social Media Map Application\Social Media Map Application\obj\Debug\netstandard2.0\Social Media Map Application.csproj.AssemblyReference.cache
+C:\Users\Kye\Music\SocialMap\Social Media Map Application\Social Media Map Application\obj\Debug\netstandard2.0\Social Media Map Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kye\Music\SocialMap\Social Media Map Application\Social Media Map Application\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\Kye\Music\SocialMap\Social Media Map Application\Social Media Map Application\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\Kye\Music\SocialMap\Social Media Map Application\Social Media Map Application\obj\Debug\netstandard2.0\Social Media Map Application.AssemblyInfoInputs.cache
+C:\Users\Kye\Music\SocialMap\Social Media Map Application\Social Media Map Application\obj\Debug\netstandard2.0\Social Media Map Application.AssemblyInfo.cs
+C:\Users\Kye\Music\SocialMap\Social Media Map Application\Social Media Map Application\obj\Debug\netstandard2.0\Social Media Map Application.csproj.CoreCompileInputs.cache
+C:\Users\Kye\Music\SocialMap\Social Media Map Application\Social Media Map Application\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\Kye\Music\SocialMap\Social Media Map Application\Social Media Map Application\obj\Debug\netstandard2.0\Social Media Map Application.dll
+C:\Users\Kye\Music\SocialMap\Social Media Map Application\Social Media Map Application\obj\Debug\netstandard2.0\ref\Social Media Map Application.dll
+C:\Users\Kye\Music\SocialMap\Social Media Map Application\Social Media Map Application\obj\Debug\netstandard2.0\Social Media Map Application.pdb
