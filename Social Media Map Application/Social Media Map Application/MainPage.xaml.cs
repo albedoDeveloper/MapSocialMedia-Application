@@ -42,9 +42,11 @@ namespace Social_Media_Map_Application
             {
                 Label = testCounter.ToString(),
                 Address = e.ToString(),
-                Type = Mapsui.UI.Forms.PinType.Pin
-
+                Type = Mapsui.UI.Forms.PinType.Pin,
+                Position = new Mapsui.UI.Forms.Position(36.9641949, -122.0177232)
             };
+
+            //mapView.Pins.Add(pin);
         }
     }
 }
