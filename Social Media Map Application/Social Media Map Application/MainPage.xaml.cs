@@ -15,6 +15,7 @@ namespace Social_Media_Map_Application
         Map map = new Map
         {
             CRS = "EPSG:3857",
+            
         };
 
         //to be removed
@@ -23,16 +24,14 @@ namespace Social_Media_Map_Application
         public MainPage()
         {
             InitializeComponent();
-
-
             var tileLayer = Mapsui.Utilities.OpenStreetMap.CreateTileLayer();
-
-
             map.Layers.Add(tileLayer);
             //map.Widgets.Add(new Mapsui.Widgets.ScaleBar.ScaleBarWidget(map) { TextAlignment = Mapsui.Widgets.Alignment.Center, HorizontalAlignment = Mapsui.Widgets.HorizontalAlignment.Left, VerticalAlignment = Mapsui.Widgets.VerticalAlignment.Bottom });
            // map.Widgets.Add(new Mapsui.Widgets.Zoom.ZoomInOutWidget());
             mapView.Map = map;
 
+
+           // mapView.MyLocationLayer.UpdateMyLocation(new Mapsui.UI.Forms.Position(115.8613,31.9523));
         }
 
         void AddEvent_Clicked(object sender, System.EventArgs e)
@@ -43,10 +42,16 @@ namespace Social_Media_Map_Application
                 Label = testCounter.ToString(),
                 Address = e.ToString(),
                 Type = Mapsui.UI.Forms.PinType.Pin,
-                Position = new Mapsui.UI.Forms.Position(36.9641949, -122.0177232)
+                Position = new Mapsui.UI.Forms.Position(mapView.MyLocationLayer.MyLocation.Latitude, mapView.MyLocationLayer.MyLocation.Longitude)
             };
 
-            //mapView.Pins.Add(pin);
+            mapView.Pins.Add(pin);
+        }
+
+        private void OnMapClicked(object sender, Mapsui.UI.Forms.MapClickedEventArgs e)
+        {
+            mapView.MyLocationLayer.UpdateMyLocation(e.Point, false);
+            mapView.Refresh();
         }
     }
 }

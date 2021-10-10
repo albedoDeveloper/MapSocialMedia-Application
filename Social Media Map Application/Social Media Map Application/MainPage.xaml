@@ -19,9 +19,12 @@
              VerticalOptions="FillAndExpand"
              HorizontalOptions="Fill"
              BackgroundColor="Gray" 
-             HeightRequest="400"/>
+             HeightRequest="400"
+             MapClicked="OnMapClicked"
+                            />
+            
         </StackLayout>
-
+        
 
     </StackLayout>
 
