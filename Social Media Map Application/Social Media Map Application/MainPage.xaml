@@ -21,7 +21,7 @@
              BackgroundColor="Gray" 
              HeightRequest="400"
              MapClicked="OnMapClicked"
-                            />
+             PinClicked="OnPinClicked"/>
             
         </StackLayout>
         

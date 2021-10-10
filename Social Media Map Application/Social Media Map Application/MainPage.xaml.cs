@@ -34,24 +34,35 @@ namespace Social_Media_Map_Application
            // mapView.MyLocationLayer.UpdateMyLocation(new Mapsui.UI.Forms.Position(115.8613,31.9523));
         }
 
-        void AddEvent_Clicked(object sender, System.EventArgs e)
+        async void AddEvent_Clicked(object sender, System.EventArgs e)
         {
-            testCounter++;
-            var pin = new Mapsui.UI.Forms.Pin(mapView)
-            {
-                Label = testCounter.ToString(),
-                Address = e.ToString(),
-                Type = Mapsui.UI.Forms.PinType.Pin,
-                Position = new Mapsui.UI.Forms.Position(mapView.MyLocationLayer.MyLocation.Latitude, mapView.MyLocationLayer.MyLocation.Longitude)
-            };
+            string result = await DisplayPromptAsync("Tweet", "Please enter your tweet below");
 
-            mapView.Pins.Add(pin);
+            if (result != null)
+            {
+                testCounter++;
+                var pin = new Mapsui.UI.Forms.Pin(mapView)
+                {
+                    Label = testCounter.ToString(),
+                    Address = e.ToString(),
+                    Type = Mapsui.UI.Forms.PinType.Pin,
+                    Position = new Mapsui.UI.Forms.Position(mapView.MyLocationLayer.MyLocation.Latitude, mapView.MyLocationLayer.MyLocation.Longitude)
+                };
+
+                mapView.Pins.Add(pin);
+            }
+
         }
 
         private void OnMapClicked(object sender, Mapsui.UI.Forms.MapClickedEventArgs e)
         {
             mapView.MyLocationLayer.UpdateMyLocation(e.Point, false);
             mapView.Refresh();
+        }
+
+        async private void OnPinClicked(object sender, Mapsui.UI.Forms.MapClickedEventArgs e)
+        {
+            await DisplayAlert("Tweet", "Here is the tweet", "OK");
         }
     }
 }
