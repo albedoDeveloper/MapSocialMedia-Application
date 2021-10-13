@@ -18,12 +18,14 @@ namespace Social_Media_Map_Application
         public string carerName { get; set; }
 
         public string carerTime { get; set; }
-        
-        public Carer(string carerName, CareLevel careLevel, string carerTime)
+
+        public byte[] image{ get; set; }
+        public Carer(string carerName, CareLevel careLevel, string carerTime, byte[] image)
         {
             this.carerName = carerName;
             this.careLevel = careLevel;
             this.carerTime = carerTime;
+            this.image = image;
         }
     }
 }

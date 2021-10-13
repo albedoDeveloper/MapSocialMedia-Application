@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Mapsui;
 using Tweetinvi;
+using Tweetinvi.Auth;
 using Xamarin.Essentials;
 using System.IO;
-
-
+using System.Diagnostics;
+using Xamarin.Auth;
 namespace Social_Media_Map_Application
 {
     public partial class MainPage : ContentPage
@@ -18,23 +19,32 @@ namespace Social_Media_Map_Application
         Mapsui.Map map = new Mapsui.Map
         {
             CRS = "EPSG:3857",
-
         };
 
-        //to be removed
-        int testCounter = 0;
-
         Tweetinvi.TwitterClient userClient;
+        Map map2;
         public MainPage()
         {
             InitializeComponent();
             var tileLayer = Mapsui.Utilities.OpenStreetMap.CreateTileLayer();
             map.Layers.Add(tileLayer);
-
+           
+            map2 = new Map(mapView);
+           
             mapView.Map = map;
             mapView.MyLocationLayer.UpdateMyLocation(new Mapsui.UI.Forms.Position(31.9523, 115.8613), false);
 
-            userClient = new TwitterClient("cBpRVUldNZjRZe3TL2ZAEwwZ5", "B83oc4cAX68u037ZLzwDKlPQBb5bpj9vFtEd7sgyqoRZ5VDmnV", "1445049682854506506-uLKCbWcLGflxgQoYxrZSvYPaN6pUqr", "KNHAWhJDpe6p9F9eMgXMZdMKxwJhkQluzLjBG40O3iq9s");
+            AuthorizeTwitter();
+
+            var hasCarers = CarerManagerSingleton.Instance.LoadCarersFromJSON();
+
+            if (hasCarers)
+            {
+                foreach (var carer in CarerManagerSingleton.Instance.GetAllCarers())
+                {
+                    AddPin(carer.Key, carer.Value.image);
+                }
+            }
         }
 
 
@@ -84,20 +94,19 @@ namespace Social_Media_Map_Application
             }
         }
 
+
+        async void Read_Clicked(object sender, System.EventArgs e)
+        {
+            var user = await userClient.Users.GetAuthenticatedUserAsync();
+            var url = "https://twitter.com/" + user.ToString();
+            await Browser.OpenAsync(new Uri(url), BrowserLaunchMode.SystemPreferred);
+        }
+
         private void OnMapClicked(object sender, Mapsui.UI.Forms.MapClickedEventArgs e)
         {
             mapView.MyLocationLayer.UpdateMyLocation(e.Point, false);
             mapView.Refresh();
         }
-
-       /*async private void OnPinClicked(object sender, Mapsui.UI.Forms.MapClickedEventArgs e)
-        {
-
-
-            await DisplayAlert("Carer Info", "here", "OK");
-
-
-        }*/
 
 
         async void AddCarer_Clicked(object sender, System.EventArgs e)
@@ -105,42 +114,108 @@ namespace Social_Media_Map_Application
             string name = await DisplayPromptAsync("Name of Carer", "Please enter the name of the carer below");
             string action = await DisplayActionSheet("Type of Carer", "Cancel",null,"Relative", "Friend", "Professional");
             string time = await DisplayPromptAsync("Time available", "Please enter the times the carer is available below");
+            await DisplayAlert("Image", "Please select an image to represent the carer.", "OK");
+
+            FileResult photo = null;
+            try
+            {
+                photo = await MediaPicker.PickPhotoAsync();
+                
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine($"PickPhotoAsync THREW: {ex.Message}");
+            }
+
 
             if (name != null && time != null && !action.Equals("Cancel"))
             {
-
-                EventManagerSingleton.Instance.AddNewCarer(name, action, time);
-
-
-
-                AddPin(name);
+ 
+                var icon = photo.OpenReadAsync();
+                MemoryStream ma;
+                MemoryStream ImageStream = new MemoryStream();
 
 
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    icon.Result.CopyTo(ms);
+                    ma = ms;
+                }
+                
+                CarerManagerSingleton.Instance.AddNewCarer(name, action, time, ma.ToArray());
 
+                AddPin(name, ma.ToArray());
             }
 
         }
 
-         void AddPin(string name)
+         void AddPin(string name, byte[] image)
         {
             var pin = new Mapsui.UI.Forms.Pin(mapView)
             {
                 Label = name.ToString(),
                 Type = Mapsui.UI.Forms.PinType.Icon,
-                Position = new Mapsui.UI.Forms.Position(mapView.MyLocationLayer.MyLocation.Latitude, mapView.MyLocationLayer.MyLocation.Longitude)
+                Position = new Mapsui.UI.Forms.Position(mapView.MyLocationLayer.MyLocation.Latitude, mapView.MyLocationLayer.MyLocation.Longitude),
+                Icon = image,
+                Scale = 0.04f
             };
 
             pin.Callout.CalloutClicked += async(s, e) =>
             {
                 var marker = e.Callout.Pin;
 
-                var carer = EventManagerSingleton.Instance.GetCarer(marker.Label);
+                var carer = CarerManagerSingleton.Instance.GetCarer(marker.Label);
 
-                await DisplayAlert("Carer Info", carer.carerName + "\n" + carer.careLevel + "\n" + carer.carerTime, "OK");
-
+                await DisplayAlert("Carer Info", "Name: " + carer.carerName + "\n" + "Carer type: " + carer.careLevel + "\n" + "Availabilty: " + carer.carerTime, "OK");
+                pin.ShowCallout();
             };
 
             mapView.Pins.Add(pin);
+            pin.ShowCallout();
+
+        }
+
+        async void AuthorizeTwitter()
+        {
+            var appCredentials = new TwitterClient("cBpRVUldNZjRZe3TL2ZAEwwZ5", "B83oc4cAX68u037ZLzwDKlPQBb5bpj9vFtEd7sgyqoRZ5VDmnV");
+
+
+            var authenticationRequest = await appCredentials.Auth.RequestAuthenticationUrlAsync();
+
+            /*  OAuth2Authenticator auth = new OAuth2Authenticator
+              (
+              clientId: "User",
+              scope: "",
+              authorizeUrl: new Uri(authenticationRequest.AuthorizationURL),
+              null,
+              null,
+              true
+              );
+
+              auth.Completed += (sender, eventArgs) =>
+              {
+                  this.Finish();
+              }*/
+
+
+
+            try
+            {
+                await Browser.OpenAsync(authenticationRequest.AuthorizationURL, BrowserLaunchMode.SystemPreferred);
+
+                string pin = await DisplayPromptAsync("Authentication", "Please enter the given pin");
+
+                var userCredentials = await appCredentials.Auth.RequestCredentialsFromVerifierCodeAsync(pin, authenticationRequest);
+
+                userClient = new TwitterClient(userCredentials);
+                var user = await userClient.Users.GetAuthenticatedUserAsync();
+            }
+
+            catch
+            {
+                await DisplayAlert("Error", "Unable to login into twitter, please try again", "OK");
+            }
 
         }
 
