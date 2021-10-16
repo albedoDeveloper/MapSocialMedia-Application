@@ -12,16 +12,21 @@
         </Frame>
         
         <Label Text="Google Map Social Media Integration for people with cognitive conditions." FontSize="16" Padding="30,0,30,0"/>
-        <Button Text="Send Tweet" FontSize="24" Padding="30,10,30,10" Clicked="Alert_Clicked"/>
-        <Button Text="Read Tweet" FontSize="24" Padding="30,10,30,10" Clicked="Read_Clicked"/>
-        <Button Text="Add Carer" FontSize="Title" Padding="30,10,30,10" Clicked="AddCarer_Clicked"/>
+        <Button Text="Send Social" FontSize="24" Padding="30,10,30,10" Clicked="Alert_Clicked"/>
+        <Button Text="Read Social" FontSize="24" Padding="30,10,30,10" Clicked="Read_Clicked"/>
+
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Add Carer" FontSize="Title" Padding="30,10,30,10" Clicked="AddCarer_Clicked"/>
+            <Button Text="Delete Carer" FontSize="Title" Padding="30,10,30,10" Clicked="DeleteCarer_Clicked"/>
+        </StackLayout>
         <StackLayout>
             <mapsui:MapView x:Name="mapView"
              VerticalOptions="FillAndExpand"
              HorizontalOptions="Fill"
              BackgroundColor="Gray" 
              HeightRequest="400"
-             MapClicked="OnMapClicked"  
+             MapClicked="OnMapClicked"
+             
              />
             
         </StackLayout>

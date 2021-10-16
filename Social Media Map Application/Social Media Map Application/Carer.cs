@@ -12,18 +12,25 @@ namespace Social_Media_Map_Application
 
     };
 
-    class Carer
+    public class Carer
     {
         public CareLevel careLevel { get; set; }
         public string carerName { get; set; }
 
         public string carerTime { get; set; }
 
+        public double latitude { get; set; }
+        
+        public double longitude { get; set; }
+
         public byte[] image{ get; set; }
-        public Carer(string carerName, CareLevel careLevel, string carerTime, byte[] image)
+       
+        public Carer(string carerName, CareLevel careLevel, string carerTime, double latitude, double longitude, byte[] image)
         {
             this.carerName = carerName;
             this.careLevel = careLevel;
+            this.latitude = latitude;
+            this.longitude = longitude;
             this.carerTime = carerTime;
             this.image = image;
         }
